@@ -1,0 +1,16 @@
+{
+    "meta": {
+        "type": "account_cash",
+        "fetched_at": "2025-04-21T21:47:29.230215Z",
+        "source_url": "https://live.trading212.com/api/v0/equity/account/cash"
+    },
+    "data": {
+        "free": 0.75,
+        "total": 3225.59,
+        "ppl": 543.85,
+        "result": -266.03,
+        "invested": 2680.99,
+        "pieCash": 0.39,
+        "blocked": null
+    }
+}
