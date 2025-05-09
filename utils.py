@@ -1,7 +1,7 @@
 import requests
 import os
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 
 def fetch_account_cash(api_key):
     url = "https://live.trading212.com/api/v0/equity/account/cash"
@@ -35,3 +35,18 @@ def load_json(type_name):
         with open(filepath) as f:
             return json.load(f)
     return None
+
+### Refresh Logic ###
+
+LAST_REFRESH_FILE = "last_refresh.json"
+
+def get_last_refresh():
+    if os.path.exists(LAST_REFRESH_FILE):
+        with open(LAST_REFRESH_FILE, "r") as f:
+            data = json.load(f)
+            return datetime.fromisoformat(data["last_refresh"])
+    return None
+
+def set_last_refresh():
+    with open(LAST_REFRESH_FILE, "w") as f:
+        json.dump({"last_refresh": datetime.now().isoformat()}, f)
